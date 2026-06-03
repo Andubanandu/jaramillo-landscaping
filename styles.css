@@ -1018,3 +1018,105 @@ h1 { font-size: clamp(2rem, 5vw, 3.625rem); }
 
 /* Maps placeholder map pin */
 .maps-placeholder p svg { width: 2rem; height: 2rem; stroke: var(--color-text-muted); }
+
+/* ============================================================
+   HERO REDESIGN — depth, hierarchy, professional finish
+   ============================================================ */
+
+/* More impactful home hero padding */
+.hero { padding: 7.5rem 1.5rem 6.5rem; background: #172e07; }
+
+/* Richer layered gradient + subtle dot-grid texture */
+.hero::before {
+  background:
+    linear-gradient(155deg, rgba(12,28,4,0.99) 0%, rgba(34,62,12,0.94) 48%, rgba(44,80,16,0.97) 100%),
+    radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 28px 28px;
+}
+
+/* Warm amber glow + green bottom anchor */
+.hero::after {
+  background:
+    radial-gradient(ellipse 65% 80% at 82% 0%,   rgba(195,135,18,0.22)  0%, transparent 52%),
+    radial-gradient(ellipse 45% 55% at 14% 100%,  rgba(70,130,30,0.15)   0%, transparent 46%),
+    radial-gradient(ellipse 40% 50% at 50% -8%,   rgba(255,255,255,0.06) 0%, transparent 58%);
+}
+
+/* Deeper text shadow */
+.hero h1 { position: relative; text-shadow: 0 2px 18px rgba(0,0,0,0.35); }
+
+/* Accent line under home hero h1 */
+.hero:not(.hero-service) .hero-inner > h1 { padding-bottom: 1.25rem; }
+.hero:not(.hero-service) .hero-inner > h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 56px; height: 3px;
+  background: var(--color-cta);
+  border-radius: 2px;
+}
+
+/* Larger, more readable subtext */
+.hero p { font-size: 1.25rem; line-height: 1.72; max-width: 580px; opacity: 0.92; }
+
+/* Trust/location tagline pill */
+.hero-tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: rgba(255,255,255,0.88);
+  padding: 0.35rem 1rem 0.35rem 0.85rem;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 1.625rem;
+  animation: heroBadgePop 0.5s var(--ease-out) both;
+}
+.hero-tagline svg { width: 0.9rem; height: 0.9rem; stroke: var(--color-cta); flex-shrink: 0; }
+
+/* Service hero — more breathing room, distinct accent */
+.hero-service { padding: 5.5rem 1.5rem 4.75rem; }
+.hero-service::before {
+  background: linear-gradient(158deg, rgba(10,24,3,0.99) 0%, rgba(38,68,14,0.95) 100%);
+}
+/* Accent bar at top of every service hero */
+.hero-service::after {
+  background:
+    radial-gradient(ellipse 70% 50% at 75% -5%,  rgba(195,135,18,0.18)  0%, transparent 55%),
+    radial-gradient(ellipse 40% 60% at 18% 110%,  rgba(60,120,25,0.12)   0%, transparent 50%);
+  border-top: 3px solid var(--color-cta);
+}
+
+/* Glassmorphism timeframe badge */
+.service-timeframe-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255,255,255,0.13);
+  border: 1px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(255,255,255,0.95);
+  padding: 0.45rem 1.25rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  letter-spacing: 0.01em;
+}
+.service-timeframe-badge svg {
+  width: 0.9rem; height: 0.9rem;
+  stroke: rgba(255,220,100,0.9);
+}
+
+/* Mobile hero tweaks */
+@media (max-width: 640px) {
+  .hero { padding: 5.5rem 1.25rem 5rem; }
+  .hero-service { padding: 4.25rem 1.25rem 3.75rem; }
+  .hero p { font-size: 1.0625rem; }
+}
