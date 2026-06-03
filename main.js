@@ -255,3 +255,6 @@ function initFormRedirect() {
     });
   });
 }
+
+/* --- Lucide Icons --- */
+if (typeof lucide !== 'undefined') lucide.createIcons();

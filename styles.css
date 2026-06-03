@@ -976,3 +976,45 @@ h1 { font-size: clamp(2rem, 5vw, 3.625rem); }
 .site-footer {
   border-top: 3px solid var(--color-cta);
 }
+
+
+/* ============================================================
+   LUCIDE SVG ICON SIZING
+   ============================================================ */
+
+/* Service card icons */
+.service-icon { display: block; margin-bottom: 0.875rem; line-height: 1; }
+.service-icon svg { width: 2.25rem; height: 2.25rem; stroke: var(--color-primary); stroke-width: 1.5; }
+
+/* Trust / Why section icons */
+.trust-icon { flex-shrink: 0; width: 2.75rem; display: flex; align-items: flex-start; justify-content: center; margin-top: 4px; }
+.trust-icon svg { width: 2rem; height: 2rem; stroke: var(--color-primary); stroke-width: 1.75; }
+
+/* About page value card icons */
+.value-icon { display: block; margin-bottom: 0.875rem; }
+.value-icon svg { width: 2rem; height: 2rem; stroke: var(--color-primary); stroke-width: 1.75; }
+
+/* Contact strip icons */
+.contact-item-icon { display: block; margin-bottom: 0.625rem; }
+.contact-item-icon svg { width: 2.25rem; height: 2.25rem; stroke: var(--color-cta); stroke-width: 1.5; }
+
+/* Contact info sidebar icons (.cii-icon) */
+.cii-icon { flex-shrink: 0; margin-top: 2px; }
+.cii-icon svg { width: 1.5rem; height: 1.5rem; stroke: var(--color-primary); stroke-width: 1.75; }
+
+/* Service timeframe badge clock icon */
+.service-timeframe-badge svg { width: 1rem; height: 1rem; vertical-align: -0.125em; flex-shrink: 0; }
+
+/* Response promise icon */
+.response-promise svg { width: 1.25rem; height: 1.25rem; flex-shrink: 0; stroke: var(--color-cta); }
+
+/* Thank you page check icon */
+.thankyou-icon { display: block; margin-bottom: 1.5rem; }
+.thankyou-icon svg { width: 5rem; height: 5rem; stroke: #22c55e; stroke-width: 1.5; }
+
+/* About service area map pin */
+.service-area-box > div:first-child { display: flex; align-items: center; justify-content: center; }
+.service-area-box > div:first-child svg { width: 3rem; height: 3rem; stroke: var(--color-primary); stroke-width: 1.5; }
+
+/* Maps placeholder map pin */
+.maps-placeholder p svg { width: 2rem; height: 2rem; stroke: var(--color-text-muted); }
