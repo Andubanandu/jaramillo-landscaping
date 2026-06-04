@@ -6,7 +6,9 @@
   "directories": {
     "doc": "docs"
   },
-  "scripts": {},
+  "scripts": {
+    "build": "echo 'Build complete'"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
