@@ -6,6 +6,7 @@
   <title>Contact Us | Jaramillo Landscape — Treasure Valley, ID</title>
   <meta name="description" content="Contact Jaramillo Landscape in Treasure Valley, Idaho. Call 208-863-4371 or send a message — we respond within 24 hours.">
   <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -77,8 +78,7 @@
 
           <div data-animate>
             <h2 style="color:var(--color-primary);margin-bottom:1.75rem">Send Us a Message</h2>
-            <form class="form-wrap" action="mailto:jaramillolandscaping208@gmail.com" method="post" enctype="text/plain"
-              onsubmit="setTimeout(function(){window.location.href='thank-you.html'},900)">
+            <form class="form-wrap" id="contact-form" novalidate>
               <div class="form-grid-2col">
                 <div class="form-group">
                   <label class="form-label" for="c-name">Name <span class="req">*</span></label>
@@ -102,8 +102,14 @@
                 </div>
               </div>
               <div class="form-actions">
-                <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                <button type="submit" class="btn btn-primary btn-lg" id="contact-submit-btn">Send Message</button>
                 <span class="form-note">We respond within 24 hours.</span>
+              </div>
+              <div id="contact-success" style="display:none;margin-top:1.25rem;padding:1rem 1.25rem;background:#f0f7ed;border:1px solid #b6d9a8;border-radius:var(--radius);color:#2d6a1f;font-weight:500;">
+                Thank you! Your message has been sent. We'll get back to you within 24 hours.
+              </div>
+              <div id="contact-error" style="display:none;margin-top:1.25rem;padding:1rem 1.25rem;background:#fdf2f2;border:1px solid #f5c6c6;border-radius:var(--radius);color:#9b1c1c;font-weight:500;">
+                Something went wrong. Please try again or call us at <a href="tel:2088634371">208-863-4371</a>.
               </div>
             </form>
             <div class="response-promise">
@@ -256,5 +262,42 @@
 
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script src="main.js"></script>
+  <script>
+    // ── EmailJS contact form ──────────────────────────────────────────
+    // Replace the three placeholders below with your EmailJS credentials
+    // from https://dashboard.emailjs.com
+    const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
+    const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+    const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
+
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!this.checkValidity()) { this.reportValidity(); return; }
+
+      var btn = document.getElementById('contact-submit-btn');
+      var successBox = document.getElementById('contact-success');
+      var errorBox   = document.getElementById('contact-error');
+
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      successBox.style.display = 'none';
+      errorBox.style.display   = 'none';
+
+      emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
+        .then(function() {
+          successBox.style.display = 'block';
+          document.getElementById('contact-form').reset();
+        })
+        .catch(function() {
+          errorBox.style.display = 'block';
+        })
+        .finally(function() {
+          btn.disabled = false;
+          btn.textContent = 'Send Message';
+        });
+    });
+  </script>
 </body>
 </html>
