@@ -10,3 +10,5 @@ node_modules/
 
 # Dev tool screenshots (internal only)
 .claude/skills/run-jaramillolandscaping/screenshots/
+nav-*.png
+nav-check*.png
