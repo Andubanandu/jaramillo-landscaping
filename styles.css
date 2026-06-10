@@ -22,7 +22,7 @@
   --shadow:             0 2px 12px rgba(0,0,0,0.08);
   --shadow-lg:          0 8px 32px rgba(0,0,0,0.14);
   --container:          1200px;
-  --nav-height:         100px;
+  --nav-height:         120px;
 }
 
 /* --- Reset --- */
@@ -618,7 +618,7 @@ p:last-child { margin-bottom: 0; }
   display: flex; align-items: center; flex-shrink: 0;
 }
 .nav-logo-img {
-  height: 86px; width: auto; border-radius: 10px;
+  height: 100px; width: auto;
   display: block;
   transition: transform 200ms var(--ease-out), opacity 200ms;
 }
