@@ -283,7 +283,7 @@ p:last-child { margin-bottom: 0; }
   cursor: pointer;
 }
 .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-.service-icon { font-size: 2.25rem; margin-bottom: 0.875rem; display: block; line-height: 1; }
+.service-icon { margin-bottom: 0.875rem; }
 .service-card h3 { font-size: 1.0625rem; margin-bottom: 0.5rem; color: var(--color-primary); }
 .service-card p { font-size: 0.9375rem; color: var(--color-text-muted); margin-bottom: 1.25rem; flex: 1; }
 .learn-more { color: var(--color-cta); font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.25rem; margin-top: auto; }
@@ -812,16 +812,16 @@ h1 { font-size: clamp(2rem, 5vw, 3.625rem); }
   border-radius: 2px;
 }
 
-/* Service icon — emoji in a soft green circle */
+/* Service icon — SVG in a soft green circle */
 .service-icon {
-  font-size: 1.5rem;
   width: 3.25rem; height: 3.25rem;
   background: rgba(45,80,22,0.08);
   border-radius: 50%;
-  display: inline-flex;
+  display: flex;
   align-items: center; justify-content: center;
+  align-self: flex-start;
+  flex-shrink: 0;
   margin-bottom: 1.125rem;
-  line-height: 1;
 }
 
 /* Service card — accent top border on hover */
@@ -983,7 +983,7 @@ h1 { font-size: clamp(2rem, 5vw, 3.625rem); }
    ============================================================ */
 
 /* Service card icons */
-.service-icon svg { width: 1.75rem; height: 1.75rem; stroke: var(--color-primary); stroke-width: 1.5; display: block; }
+.service-icon svg { width: 1.75rem; height: 1.75rem; stroke: var(--color-primary); stroke-width: 1.5; flex-shrink: 0; }
 
 /* Trust / Why section icons */
 .trust-icon { flex-shrink: 0; width: 2.75rem; display: flex; align-items: flex-start; justify-content: center; margin-top: 4px; }
