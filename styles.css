@@ -473,10 +473,40 @@ p:last-child { margin-bottom: 0; }
 .rating-stars { font-size: 2.25rem; color: #F5A623; margin-bottom: 0.625rem; line-height: 1; }
 .rating-score { font-size: 3.25rem; font-weight: 700; font-family: var(--font-heading); color: var(--color-primary); line-height: 1; }
 .rating-label { color: var(--color-text-muted); margin-top: 0.375rem; font-size: 1rem; }
-.google-badge-placeholder {
-  display: inline-block; border: 1.5px solid var(--color-border); border-radius: var(--radius);
-  padding: 0.625rem 1.25rem; font-size: 0.85rem; color: var(--color-text-muted);
+.review-source-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   margin-top: 1.25rem;
+}
+.review-source-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.625rem 1.125rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--color-primary);
+  font-size: 0.875rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+.review-source-link svg { width: 17px; height: 17px; color: var(--color-cta); }
+.review-source-link:hover {
+  border-color: var(--color-primary);
+  background: var(--color-bg-light);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+.review-source-link:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
 }
 
 .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
