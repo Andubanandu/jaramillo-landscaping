@@ -105,6 +105,40 @@ test('opens the correct external Google and Angi review profiles safely', async 
   }
 });
 
+test('identifies each review platform with a clear supporting action', async ({ page }) => {
+  await expect(page.locator('.review-source-heading')).toHaveText('Explore our verified profiles');
+
+  const googleLink = page.getByRole('link', { name: 'Look at the Google profile' });
+  await expect(googleLink.locator('.review-source-name')).toHaveText('Google');
+  await expect(googleLink.locator('.review-source-action')).toHaveText('View our business profile');
+
+  const angiLink = page.getByRole('link', { name: 'Angi.com reviews' });
+  await expect(angiLink.locator('.review-source-name')).toHaveText('Angi');
+  await expect(angiLink.locator('.review-source-action')).toHaveText('Read customer reviews');
+});
+
+test('shows balanced profile choices on desktop and stacks them on small screens', async ({ page }) => {
+  await page.addStyleTag({ content: '.rating-overview { transition: none !important; }' });
+  await page.setViewportSize({ width: 900, height: 800 });
+  const links = page.locator('.review-source-link');
+  const desktopGoogle = await links.nth(0).boundingBox();
+  const desktopAngi = await links.nth(1).boundingBox();
+
+  expect(desktopGoogle).not.toBeNull();
+  expect(desktopAngi).not.toBeNull();
+  expect(Math.abs(desktopGoogle!.y - desktopAngi!.y)).toBeLessThanOrEqual(2);
+  expect(Math.abs(desktopGoogle!.width - desktopAngi!.width)).toBeLessThanOrEqual(2);
+
+  await page.setViewportSize({ width: 320, height: 800 });
+  const mobileGoogle = await links.nth(0).boundingBox();
+  const mobileAngi = await links.nth(1).boundingBox();
+
+  expect(mobileGoogle).not.toBeNull();
+  expect(mobileAngi).not.toBeNull();
+  expect(mobileAngi!.y).toBeGreaterThan(mobileGoogle!.y + mobileGoogle!.height);
+  expect(Math.abs(mobileGoogle!.width - mobileAngi!.width)).toBeLessThanOrEqual(2);
+});
+
 test('keeps review profile links inside a narrow viewport with a visible keyboard focus ring', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 800 });
   await expect(page.locator('.rating-overview')).toHaveCSS('opacity', '1');
